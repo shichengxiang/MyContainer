@@ -4,15 +4,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ffffff">
+
     <android.support.v4.view.ViewPager
         android:id="@+id/viewPager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingTop="300dp"
+        android:clipToPadding="false"
         android:paddingBottom="60dp"
         android:paddingLeft="60dp"
         android:paddingRight="60dp"
-        android:clipToPadding="false">
+        android:paddingTop="200dp">
     </android.support.v4.view.ViewPager>
 
+    <Button
+        android:id="@+id/btn_toMain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="去首页"
+        android:textAppearance="@style/Widget.AppCompat.ButtonBar"/>
 </RelativeLayout>

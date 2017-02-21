@@ -1,7 +1,6 @@
 package com.example.comtainer.containerdemo;
 
 import android.os.Bundle;
-import android.provider.Telephony;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
@@ -15,7 +14,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        View container= LayoutInflater.from(this).inflate(R.layout.activity_main,null);
+        View container= LayoutInflater.from(this).inflate(R.layout.layout_bottom,null);
         container.findViewById(R.id.transition_current_scene);
         setContentView(getLayoutId());
     }
