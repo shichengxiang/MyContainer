@@ -2,8 +2,8 @@ package com.example.comtainer.containerdemo.activities;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,29 +13,73 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.comtainer.containerdemo.R;
+import com.lcodecore.tkrefreshlayout.RefreshListenerAdapter;
 import com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout;
-
-import java.util.Collections;
-import java.util.List;
+import com.lcodecore.tkrefreshlayout.header.progresslayout.ProgressLayout;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity {
 
      Context mContext;
+
      @BindView (R.id.twinklingRefreshLayout)
      TwinklingRefreshLayout mTwinklingRefreshLayout;
      @BindView (R.id.lv_content)
      ListView mListView;
-     private String[] mData={"1","2","3","2","3","2","3","2","3","2","3","2","3"};
+
+     private TAdapter mTAdapter;
+     private String[] mData = {"支持包裹任意布局的下拉刷新，上拉加载更多", "2", "3", "2", "3", "2", "3", "2", "3", "2", "3", "2", "3"};
 
      @Override
      protected void onCreate(@Nullable Bundle savedInstanceState) {
           super.onCreate (savedInstanceState);
           setContentView (R.layout.activity_main);
-          mContext=this;
+          ButterKnife.bind (this);
+          mContext = this;
+          mTAdapter = new TAdapter ();
+          setListener ();
      }
-     private class TAdapter extends BaseAdapter{
+
+     private void setListener() {
+          mListView.setAdapter (mTAdapter);
+          ProgressLayout headLayout = new ProgressLayout (this);
+          mTwinklingRefreshLayout.setHeaderView (headLayout);
+          mTwinklingRefreshLayout.setOverScrollBottomShow (true);
+          mTwinklingRefreshLayout.startRefresh ();//自动更新
+//          mTwinklingRefreshLayout.setEnableRefresh (false);// 是否可刷新
+//          mTwinklingRefreshLayout.setEnableLoadmore (false);//是否可加载更多
+          mTwinklingRefreshLayout.setOverScrollMode (TwinklingRefreshLayout.OVER_SCROLL_ALWAYS);
+          mTwinklingRefreshLayout.setOnRefreshListener (new RefreshListenerAdapter () {
+               @Override
+               public void onRefresh(TwinklingRefreshLayout refreshLayout) {
+                    super.onRefresh (refreshLayout);
+                    new Handler ().postDelayed (new Runnable () {
+                         @Override
+                         public void run() {
+                              mTwinklingRefreshLayout.finishRefreshing ();
+                         }
+                    }, 2000);
+               }
+
+               @Override
+               public void onLoadMore(TwinklingRefreshLayout refreshLayout) {
+                    super.onLoadMore (refreshLayout);
+                    new Handler ().postDelayed (new Runnable () {
+                         @Override
+                         public void run() {
+                              mTwinklingRefreshLayout.finishLoadmore ();
+                         }
+                    }, 2000);
+               }
+          });
+          TextView view = new TextView (this);
+          view.setText ("FIXED");
+          mTwinklingRefreshLayout.addFixedExHeader (view);
+     }
+
+     private class TAdapter extends BaseAdapter {
           @Override
           public int getCount() {
                return mData.length;
@@ -53,8 +97,8 @@ public class MainActivity extends AppCompatActivity {
 
           @Override
           public View getView(int position, View convertView, ViewGroup parent) {
-               if(convertView==null){
-                    convertView= LayoutInflater.from (mContext).inflate (R.layout.item_lv_main,null);
+               if (convertView == null) {
+                    convertView = LayoutInflater.from (mContext).inflate (R.layout.item_lv_main, null);
                }
                TextView viewById = (TextView) convertView.findViewById (R.id.item);
                viewById.setText (mData[position]);
