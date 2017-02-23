@@ -1,6 +1,7 @@
 package com.example.comtainer.containerdemo.activities;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
@@ -30,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
      ListView mListView;
 
      private TAdapter mTAdapter;
-     private String[] mData = {"支持包裹任意布局的下拉刷新，上拉加载更多", "2", "3", "2", "3", "2", "3", "2", "3", "2", "3", "2", "3"};
+     private String[] mData = {"ToolBar使用", "Drawer 抽屉效果", "Login UI", "2", "3", "2", "3", "2", "3", "2", "3", "2", "3"};
 
      @Override
      protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -100,6 +101,29 @@ public class MainActivity extends AppCompatActivity {
                if (convertView == null) {
                     convertView = LayoutInflater.from (mContext).inflate (R.layout.item_lv_main, null);
                }
+               Intent intent = null;
+               switch (position) {
+                    case 0:
+                         intent = new Intent (mContext, ToolBarActivity.class);
+                         break;
+                    case 1:
+                         intent=new Intent (mContext,DrawerActivity.class);
+                         break;
+                    case 2:
+                         intent=new Intent (mContext,LoginActivity.class);
+                         break;
+                    default:
+                         intent = new Intent (mContext, GuideActivity.class);
+                         break;
+               }
+               final Intent finalIntent = intent;
+               convertView.setOnClickListener (new View.OnClickListener () {
+                    @Override
+                    public void onClick(View v) {
+                         if (finalIntent != null)
+                              MainActivity.this.startActivity (finalIntent);
+                    }
+               });
                TextView viewById = (TextView) convertView.findViewById (R.id.item);
                viewById.setText (mData[position]);
                return convertView;
