@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
      ListView mListView;
 
      private TAdapter mTAdapter;
-     private String[] mData = {"ToolBar使用", "Drawer 抽屉效果", "Login UI", "2", "3", "2", "3", "2", "3", "2", "3", "2", "3"};
+     private String[] mData = {"ToolBar使用", "Drawer 抽屉效果", "Login UI", "Tabs of Fragment", "Setttings of Sys", "2", "3", "2", "3", "2", "3", "2", "3"};
 
      @Override
      protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -111,6 +111,9 @@ public class MainActivity extends AppCompatActivity {
                          break;
                     case 2:
                          intent=new Intent (mContext,LoginActivity.class);
+                         break;
+                    case 3:
+                         intent=new Intent(mContext,TabsActivity.class);
                          break;
                     default:
                          intent = new Intent (mContext, GuideActivity.class);

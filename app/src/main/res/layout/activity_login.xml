@@ -1,5 +1,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               xmlns:tools="http://schemas.android.com/tools"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:gravity="center_horizontal"
@@ -71,6 +72,16 @@
                 android:layout_marginTop="16dp"
                 android:text="@string/action_sign_in"
                 android:textStyle="bold"/>
+            <com.example.comtainer.containerdemo.customeview.CustomeView
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:background="#ccc"
+                android:paddingBottom="40dp"
+                android:paddingLeft="20dp"
+                app:exampleColor="#33b5e5"
+                app:exampleDimension="24sp"
+                app:exampleDrawable="@android:drawable/ic_menu_add"
+                app:exampleString="Hello, CustomeView"/>
 
         </LinearLayout>
     </ScrollView>

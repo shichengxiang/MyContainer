@@ -18,10 +18,6 @@
             android:theme="@style/AppTheme">
         </activity>
         <activity
-            android:name=".SettingsActivity"
-            android:label="@string/title_activity_settings">
-        </activity>
-        <activity
             android:name=".activities.GuideActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -44,6 +40,12 @@
             android:name=".activities.LoginActivity"
             android:label="@string/title_activity_login">
         </activity>
+        <activity
+            android:name=".activities.TabsActivity"
+            android:label="@string/title_activity_tabs"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+
     </application>
 
 </manifest>
