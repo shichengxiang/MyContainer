@@ -1,5 +1,6 @@
 package com.example.comtainer.containerdemo.activities;
 
+import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -45,8 +46,8 @@ public class MainActivity extends AppCompatActivity {
 
      private void setListener() {
           mListView.setAdapter (mTAdapter);
-          ProgressLayout headLayout = new ProgressLayout (this);
-          mTwinklingRefreshLayout.setHeaderView (headLayout);
+//          ProgressLayout headLayout = new ProgressLayout (this);
+//          mTwinklingRefreshLayout.setHeaderView (headLayout);
           mTwinklingRefreshLayout.setOverScrollBottomShow (true);
           mTwinklingRefreshLayout.startRefresh ();//自动更新
 //          mTwinklingRefreshLayout.setEnableRefresh (false);// 是否可刷新
