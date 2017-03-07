@@ -12,19 +12,32 @@ android {
         versionName "1.0"
         vectorDrawables.useSupportLibrary = true
     }
-    productFlavors{
+    productFlavors {
         xiaowei{
+            manifestPlaceholders = [
+                    MYAPP: "贷鱼debug"
+            ]
+        }
+        platform_360 {
+            manifestPlaceholders = [
+                    MYAPP: "贷鱼金服"
+            ]
         }
     }
     buildTypes {
         release {
+            buildConfigField "String","base_url","http:\\ss"
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            buildConfigField "String","base_url","http:\\ss"
+            minifyEnabled false
         }
     }
     android.applicationVariants.all { variant ->
         variant.outputs.each { output ->
-            output.outputFile = new File(output.outputFile.parent, Flavor.name + buildType.name + "-v" +
+            output.outputFile = new File(output.outputFile.parent, Flavor.name + "_" + buildType.name + "_v" +
                     defaultConfig.versionName + ".apk");
         }
     }
