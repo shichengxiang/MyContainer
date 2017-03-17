@@ -1,6 +1,5 @@
 package com.example.comtainer.containerdemo.activities;
 
-import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,11 +13,10 @@ import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.example.comtainer.containerdemo.BuildConfig;
 import com.example.comtainer.containerdemo.R;
+import com.example.comtainer.containerdemo.presenter.PageStateLayout;
 import com.lcodecore.tkrefreshlayout.RefreshListenerAdapter;
 import com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout;
-import com.lcodecore.tkrefreshlayout.header.progresslayout.ProgressLayout;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -31,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
      TwinklingRefreshLayout mTwinklingRefreshLayout;
      @BindView (R.id.lv_content)
      ListView mListView;
+     private PageStateLayout mPageStateLayout;
 
      private TAdapter mTAdapter;
      private String[] mData = {"ToolBar使用", "Drawer 抽屉效果", "Login UI", "Tabs of Fragment", "Setttings of Sys", "2", "3", "2", "3", "2", "3", "2", "3"};
@@ -39,6 +38,13 @@ public class MainActivity extends AppCompatActivity {
      protected void onCreate(@Nullable Bundle savedInstanceState) {
           super.onCreate (savedInstanceState);
           setContentView (R.layout.activity_main);
+          mPageStateLayout=new PageStateLayout (this);
+          PageStateLayout.Builder.hasTopView (false)
+                  .setSuccessView (R.layout.activity_main)
+                  .setEmptyView (R.layout.layout_empty)
+                  .setErrorView (R.layout.layout_error)
+                  .setLoadingView (R.layout.layout_loading);
+          mPageStateLayout.onEmpty ();
           ButterKnife.bind (this);
           mContext = this;
           mTAdapter = new TAdapter ();
@@ -80,6 +86,13 @@ public class MainActivity extends AppCompatActivity {
           TextView view = new TextView (this);
           view.setText ("FIXED");
           mTwinklingRefreshLayout.addFixedExHeader (view);
+
+          new Handler ().postDelayed (new Runnable () {
+               @Override
+               public void run() {
+                    mPageStateLayout.onSucess ();
+               }
+          },3000);
      }
 
      private class TAdapter extends BaseAdapter {

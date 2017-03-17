@@ -26,12 +26,12 @@ android {
     }
     buildTypes {
         release {
-            buildConfigField "String","base_url","http:\\ss"
+//            buildConfigField "String","base_url","\"http:\\ss\""
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
         debug {
-            buildConfigField "String","base_url","http:\\ss"
+//            buildConfigField "String","base_url","http:\\ss"
             minifyEnabled false
         }
     }
