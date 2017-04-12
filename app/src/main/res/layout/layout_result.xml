@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/resultContainer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+android:background="@color/cardview_light_background">
+    <RelativeLayout
+        android:id="@+id/layout_success"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorAccent"
+    android:visibility="gone">
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/layout_error"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_gravity="center"
+        android:background="@color/bb_darkBackgroundColor"
+    android:visibility="gone">
+    </RelativeLayout>
+    <ProgressBar
+        android:id="@+id/layout_loading"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_gravity="center"/>
+    <TextView
+        android:id="@+id/layout_nothing"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="暂无数据"
+    android:visibility="gone"/>
+</FrameLayout>

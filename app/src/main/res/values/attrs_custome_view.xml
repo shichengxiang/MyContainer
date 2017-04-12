@@ -5,4 +5,10 @@
         <attr name="exampleColor" format="color"/>
         <attr name="exampleDrawable" format="color|reference"/>
     </declare-styleable>
+    <declare-styleable name="ResultView">
+        <attr name="successView" format="reference"/>
+        <attr name="errorView" format="reference"/>
+        <attr name="nothingView" format="reference"/>
+        <attr name="loadingView" format="reference"/>
+    </declare-styleable>
 </resources>

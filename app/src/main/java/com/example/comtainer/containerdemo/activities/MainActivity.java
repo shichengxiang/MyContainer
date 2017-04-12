@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
      private PageStateLayout mPageStateLayout;
 
      private TAdapter mTAdapter;
-     private String[] mData = {"ToolBar使用", "Drawer 抽屉效果", "Login UI", "Tabs of Fragment", "Setttings of Sys", "2", "3", "2", "3", "2", "3", "2", "3"};
+     private String[] mData = {"ToolBar使用", "Drawer 抽屉效果", "Login UI", "Tabs of Fragment", "Setttings of Sys", "刷新控件", "多样式控件", "2", "3", "2", "3", "2", "3"};
 
      @Override
      protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -129,6 +129,12 @@ public class MainActivity extends AppCompatActivity {
                          break;
                     case 3:
                          intent=new Intent(mContext,TabsActivity.class);
+                         break;
+                    case 5:
+                         intent =new Intent (mContext,RefreshActivity.class);
+                         break;
+                    case 6:
+                         intent =new Intent (mContext,WidgetActivity.class);
                          break;
                     default:
                          intent = new Intent (mContext, GuideActivity.class);

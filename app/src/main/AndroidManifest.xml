@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.example.comtainer.containerdemo"
-          xmlns:tools="http://schemas.android.com/tools">
+          xmlns:tools="http://schemas.android.com/tools"
+          package="com.example.comtainer.containerdemo">
 
     <!-- To auto-complete the email text field in the login form with the user's emails -->
     <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
@@ -12,9 +12,9 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="${MYAPP}"
-        tools:replace="android:label"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        tools:replace="android:label">
         <activity
             android:name=".activities.MainActivity"
             android:theme="@style/AppTheme">
@@ -47,7 +47,13 @@
             android:label="@string/title_activity_tabs"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
-
+        <activity
+            android:name=".activities.RefreshActivity"
+            android:label="@string/title_activity_tabs"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity android:name=".activities.WidgetActivity">
+        </activity>
     </application>
 
 </manifest>
